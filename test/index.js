@@ -3,6 +3,10 @@
 var evenChunks = require('../');
 var assert = require('assert');
 
+if (!assert.deepStrictEqual) {
+  assert.deepStrictEqual = assert.deepEqual; // Close enough.
+}
+
 function join(array) {
   return array.map(function (a) {
     return Array.prototype.slice.call(a);
@@ -36,6 +40,10 @@ describe('evenChunks', function() {
                                    ', arr = ' + arr +
                                    ', t = ' + Type.name +
                                    ', m = ' + method, function() {
+            if (process.version.match(/^v0\./) && Type !== Array) {
+              return this.skip();
+            }
+
             var instance = Type === Array ? arr.slice() : new Type(arr);
             var chunked = evenChunks(instance, n, method);
             var joined = join(chunked);
