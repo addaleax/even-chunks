@@ -1,0 +1,33 @@
+{
+  "name": "even-chunks",
+  "version": "1.0.0",
+  "description": "Split an array evenly into chunks",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "nyc": "^6.4.1"
+  },
+  "scripts": {
+    "test": "nyc mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/addaleax/even-chunks.git"
+  },
+  "keywords": [
+    "stream",
+    "streams",
+    "chunk",
+    "object"
+  ],
+  "author": "Anna Henningsen <anna@addaleax.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/addaleax/even-chunks/issues"
+  },
+  "homepage": "https://github.com/addaleax/even-chunks#readme"
+}
