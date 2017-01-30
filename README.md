@@ -21,6 +21,15 @@ evenChunks([1,2,3,4,5,6,7], 4) // => [ [ 1, 2 ], [ 3, 4 ], [ 5 ], [ 6, 7 ] ]
 
 evenChunks([1,2,3,4,5,6,7], 3, evenChunks.ROUND_ROBIN)
   // => [ [ 1, 4, 7 ], [ 2, 5 ], [ 3, 6 ] ]
+
+evenChunks([1,2,3,4,5,6,7,8,9,10], 4, evenChunks.PRIORITIZE_FIRST)
+  // => [ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8 ], [ 9, 10 ] ]
+
+evenChunks([1,2,3,4,5,6,7,8,9,10], 4, evenChunks.PRIORITIZE_CENTER)
+  // => [ [ 1, 2 ], [ 3, 4, 5 ], [ 6, 7, 8 ], [ 9, 10 ] ]
+
+evenChunks([1,2,3,4,5,6,7,8,9,10], 4, evenChunks.PRIORITIZE_LAST)
+  // => [ [ 1, 2 ], [ 3, 4 ], [ 5, 6, 7 ], [ 8, 9, 10 ] ]
 ```
 
 License

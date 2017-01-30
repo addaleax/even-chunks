@@ -28,6 +28,9 @@ describe('evenChunks', function() {
   var methods = [
     undefined,
     evenChunks.CONTIGUOUS,
+    evenChunks.PRIORITIZE_FIRST,
+    evenChunks.PRIORITIZE_CENTER,
+    evenChunks.PRIORITIZE_LAST,
     evenChunks.ROUND_ROBIN
   ];
   var types = [ Array, Uint8Array, Float32Array, Buffer ];
@@ -49,6 +52,17 @@ describe('evenChunks', function() {
             var joined = join(chunked);
             assert.deepStrictEqual(Array.prototype.slice.call(instance).sort(),
                                    joined.sort());
+
+            var chunkLengths = chunked.map(function(chunk) {
+              return chunk.length;
+            }).sort().filter(function(value, index, arr) {
+              return arr.indexOf(value) === index;
+            });
+
+            assert(chunkLengths.length >= 1 && chunkLengths.length <= 2);
+            if (chunkLengths.length === 2) {
+              assert.strictEqual(chunkLengths[0] + 1, chunkLengths[1]);
+            }
           });
         });
       });
